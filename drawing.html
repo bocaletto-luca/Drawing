@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Drawing Application</title>
+  <title>Drawing-JS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Bootstrap CSS from CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -11,35 +11,82 @@
 </head>
 <body>
   <div class="container my-4">
-    <h1 class="text-center mb-4">Drawing Application</h1>
+    <h1 class="text-center mb-4">Drawing-JS</h1>
+    
     <!-- Toolbar Section -->
     <div class="toolbar mb-3">
-      <div class="form-group mb-2">
-        <label for="colorPicker" class="form-label">Color:</label>
-        <input type="color" id="colorPicker" class="form-control form-control-color" value="#000000">
+      <!-- Tool Buttons -->
+      <div class="btn-group mb-2" role="group" aria-label="Tool Selection">
+        <button id="toolBrush" class="btn btn-outline-primary active">Brush</button>
+        <button id="toolEraser" class="btn btn-outline-primary">Eraser</button>
+        <button id="toolRectangle" class="btn btn-outline-primary">Rectangle</button>
+        <button id="toolCircle" class="btn btn-outline-primary">Circle</button>
+        <button id="toolLine" class="btn btn-outline-primary">Line</button>
+        <button id="toolText" class="btn btn-outline-primary">Text</button>
       </div>
-      <div class="form-group mb-2">
-        <label for="brushSize" class="form-label">Brush Size:</label>
+      
+      <!-- Control Inputs -->
+      <div class="input-group mb-2">
+        <span class="input-group-text">Color</span>
+        <input type="color" id="colorPicker" class="form-control form-control-color" value="#000000" title="Choose color">
+      </div>
+      <div class="input-group mb-2">
+        <span class="input-group-text">Size</span>
         <input type="range" id="brushSize" class="form-range" min="1" max="50" value="5">
       </div>
-      <div class="btn-group mb-2" role="group">
-        <button id="brushTool" class="btn btn-primary active">Brush</button>
-        <button id="eraserTool" class="btn btn-secondary">Eraser</button>
+      <div class="input-group mb-2">
+        <span class="input-group-text">Opacity</span>
+        <input type="range" id="opacitySlider" class="form-range" min="0.1" max="1" step="0.1" value="1">
       </div>
+      
+      <!-- Toggles -->
+      <div class="form-check mb-2">
+        <input type="checkbox" id="shadowToggle" class="form-check-input">
+        <label class="form-check-label" for="shadowToggle">Shadow</label>
+      </div>
+      <div class="form-check mb-2">
+        <input type="checkbox" id="gradientToggle" class="form-check-input">
+        <label class="form-check-label" for="gradientToggle">Gradient</label>
+      </div>
+      
+      <!-- Action Buttons -->
       <div class="btn-group mb-2" role="group">
-        <button id="clearCanvas" class="btn btn-warning">Clear</button>
-        <button id="saveDrawing" class="btn btn-success">Save</button>
+        <button id="undoBtn" class="btn btn-info">Undo</button>
+        <button id="redoBtn" class="btn btn-info">Redo</button>
+        <button id="clearBtn" class="btn btn-warning">Clear</button>
+        <button id="resetBtn" class="btn btn-danger">Reset</button>
+        <button id="saveBtn" class="btn btn-success">Save</button>
+      </div>
+      
+      <!-- Save Format Selection -->
+      <div class="input-group mb-2">
+        <span class="input-group-text">Format</span>
+        <select id="saveFormat" class="form-select">
+          <option value="png" selected>PNG</option>
+          <option value="jpeg">JPEG</option>
+        </select>
       </div>
     </div>
+    
     <!-- Canvas Container -->
     <div class="canvas-container">
       <canvas id="drawingCanvas"></canvas>
+    </div>
+    
+    <!-- Instructions -->
+    <div class="mt-3">
+      <p>
+        Select a tool from the toolbar above and draw on the canvas below. Use Brush for freehand drawing,
+        Eraser to remove, and the shape tools (Rectangle, Circle, Line) to draw geometric figures.
+        Use Text to add text. Adjust size, opacity, and enable Shadow or Gradient effects as desired.
+        Your work is auto-saved locally.
+      </p>
     </div>
   </div>
   
   <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Custom JavaScript -->
+  <!-- Link to drawing.js (to be provided in the next post) -->
   <script src="drawing.js"></script>
 </body>
 </html>
