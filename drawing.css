@@ -1,0 +1,35 @@
+/* drawing.css - Custom styles for Drawing-JS */
+
+/* Ensure the canvas container is centered */
+.canvas-container {
+  border: 1px solid #ccc;
+  margin: auto;
+  display: block;
+}
+
+/* Canvas styling */
+canvas {
+  background-color: #ffffff; /* white background */
+  display: block;
+}
+
+/* Toolbar styling for better layout */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Optional: adjust form controls in toolbar */
+.toolbar .form-group {
+  min-width: 150px;
+}
+
+/* Ensure container takes full viewport height if desired */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Drawing Application</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS from CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="drawing.css">
+</head>
+<body>
+  <div class="container my-4">
+    <h1 class="text-center mb-4">Drawing Application</h1>
+    <!-- Toolbar Section -->
+    <div class="toolbar mb-3">
+      <div class="form-group mb-2">
+        <label for="colorPicker" class="form-label">Color:</label>
+        <input type="color" id="colorPicker" class="form-control form-control-color" value="#000000">
+      </div>
+      <div class="form-group mb-2">
+        <label for="brushSize" class="form-label">Brush Size:</label>
+        <input type="range" id="brushSize" class="form-range" min="1" max="50" value="5">
+      </div>
+      <div class="btn-group mb-2" role="group">
+        <button id="brushTool" class="btn btn-primary active">Brush</button>
+        <button id="eraserTool" class="btn btn-secondary">Eraser</button>
+      </div>
+      <div class="btn-group mb-2" role="group">
+        <button id="clearCanvas" class="btn btn-warning">Clear</button>
+        <button id="saveDrawing" class="btn btn-success">Save</button>
+      </div>
+    </div>
+    <!-- Canvas Container -->
+    <div class="canvas-container">
+      <canvas id="drawingCanvas"></canvas>
+    </div>
+  </div>
+  
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JavaScript -->
+  <script src="drawing.js"></script>
+</body>
+</html>
