@@ -1,3 +1,4 @@
+<!-- Author: Bocaletto Luca -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,21 +26,35 @@
         <button id="toolText" class="btn btn-outline-primary">Text</button>
       </div>
       
-      <!-- Control Inputs -->
+      <!-- Text Options: visible solo se viene selezionato il tool "Text" -->
+      <div id="textOptions" style="display: none; width:100%;">
+        <div class="input-group mb-2">
+          <span class="input-group-text">Text</span>
+          <input type="text" id="textInput" class="form-control" placeholder="Enter text">
+        </div>
+        <div class="input-group mb-2">
+          <span class="input-group-text">Text Size (px)</span>
+          <input type="number" id="textSizeInput" class="form-control" value="20" min="1">
+        </div>
+      </div>
+      
+      <!-- Control Inputs for Color, Brush Size and Opacity -->
       <div class="input-group mb-2">
         <span class="input-group-text">Color</span>
         <input type="color" id="colorPicker" class="form-control form-control-color" value="#000000" title="Choose color">
       </div>
       <div class="input-group mb-2">
-        <span class="input-group-text">Size</span>
+        <span class="input-group-text">Brush Size (px):</span>
         <input type="range" id="brushSize" class="form-range" min="1" max="50" value="5">
+        <span id="brushSizeValue" class="input-group-text">5</span>
       </div>
       <div class="input-group mb-2">
-        <span class="input-group-text">Opacity</span>
+        <span class="input-group-text">Opacity:</span>
         <input type="range" id="opacitySlider" class="form-range" min="0.1" max="1" step="0.1" value="1">
+        <span id="opacityValue" class="input-group-text">1</span>
       </div>
       
-      <!-- Toggles -->
+      <!-- Toggles per ombreggiatura e gradienti -->
       <div class="form-check mb-2">
         <input type="checkbox" id="shadowToggle" class="form-check-input">
         <label class="form-check-label" for="shadowToggle">Shadow</label>
@@ -47,6 +62,15 @@
       <div class="form-check mb-2">
         <input type="checkbox" id="gradientToggle" class="form-check-input">
         <label class="form-check-label" for="gradientToggle">Gradient</label>
+      </div>
+      
+      <!-- Save Format Selection -->
+      <div class="input-group mb-2">
+        <span class="input-group-text">Format</span>
+        <select id="saveFormat" class="form-select">
+          <option value="png" selected>PNG</option>
+          <option value="jpeg">JPEG</option>
+        </select>
       </div>
       
       <!-- Action Buttons -->
@@ -58,14 +82,6 @@
         <button id="saveBtn" class="btn btn-success">Save</button>
       </div>
       
-      <!-- Save Format Selection -->
-      <div class="input-group mb-2">
-        <span class="input-group-text">Format</span>
-        <select id="saveFormat" class="form-select">
-          <option value="png" selected>PNG</option>
-          <option value="jpeg">JPEG</option>
-        </select>
-      </div>
     </div>
     
     <!-- Canvas Container -->
@@ -76,17 +92,35 @@
     <!-- Instructions -->
     <div class="mt-3">
       <p>
-        Select a tool from the toolbar above and draw on the canvas below. Use Brush for freehand drawing,
-        Eraser to remove, and the shape tools (Rectangle, Circle, Line) to draw geometric figures.
-        Use Text to add text. Adjust size, opacity, and enable Shadow or Gradient effects as desired.
-        Your work is auto-saved locally.
+        Select a tool from the toolbar and draw on the canvas below.
+        Brush: freehand drawing; Eraser: remove drawing; Rectangle, Circle, Line: draw shapes;
+        Text: add text using the provided options.
+        Adjust brush size, opacity, and enable Shadow or Gradient effects as desired.
+        Your drawing is auto-saved locally.
       </p>
     </div>
   </div>
   
   <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Link to drawing.js (to be provided in the next post) -->
+  <!-- Link to drawing.js (provided in the next post) -->
   <script src="drawing.js"></script>
+  
+  <!-- Script to update dynamic slider values -->
+  <script>
+    // Aggiorna il display del valore del Brush Size
+    const brushSizeInput = document.getElementById('brushSize');
+    const brushSizeValue = document.getElementById('brushSizeValue');
+    brushSizeInput.addEventListener('input', () => {
+      brushSizeValue.textContent = brushSizeInput.value;
+    });
+    
+    // Aggiorna il display del valore dell'Opacity
+    const opacitySlider = document.getElementById('opacitySlider');
+    const opacityValue = document.getElementById('opacityValue');
+    opacitySlider.addEventListener('input', () => {
+      opacityValue.textContent = opacitySlider.value;
+    });
+  </script>
 </body>
 </html>
